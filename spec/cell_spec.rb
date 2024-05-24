@@ -37,11 +37,31 @@ RSpec.describe Cell do
     expect(@cell.fired_upon?).to eq(true)
   end
 
-  it 'reduces health of the ship if fired upon' do
+  it 'reduces health of the ship when fired upon' do
     @cell.place_ship(@cruiser)
     @cell.fire_upon
     expect(@cell.ship.health).to eq(2)
   end
 end
- 
+describe '#render' do
+    it 'can render' do
+      expect(@cell.render).to eq(".")
+
+      @cell.fire_upon
+      expect(@cell.render).to eq("M")
+
+      @cell_2 = Cell.new("C3")
+      @cell_2.place_ship(@cruiser)
+      expect(@cell_2.render).to eq(".")
+      expect(@cell_2.render(true)).to eq("S")
+
+      @cell_2.fire_upon
+      expect(@cell_2.render).to eq("H")
+
+      @cruiser.hit
+      @cruiser.hit
+      expect(@cruiser.sunk?).to eq(true)
+      expect(@cell_2.render).to eq("X")
+    end
+  end 
 end
