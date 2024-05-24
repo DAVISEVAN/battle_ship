@@ -7,22 +7,22 @@ RSpec.describe Cell do
     @cruiser = Ship.new("Cruiser", 3)
   end
 
-    describe '#initialize' do
+  describe '#initialize' do
     it 'exists' do
-        expect(@cell).to be_a(Cell)
-      end
-
-    it 'has a coordinate' do
-        expect(@cell.coordinate).to eq("B4")
-      end
-  
-    it 'starts empty' do
-        expect(@cell.ship).to be_nil
-        expect(@cell.empty?).to eq(true)
-      end
+      expect(@cell).to be_a(Cell)
     end
 
-    describe '#place_ship' do
+    it 'has a coordinate' do
+      expect(@cell.coordinate).to eq("B4")
+    end
+
+    it 'starts empty' do
+      expect(@cell.ship).to be_nil
+      expect(@cell.empty?).to eq(true)
+    end
+  end
+
+  describe '#place_ship' do
     it 'can place a ship' do
       @cell.place_ship(@cruiser)
       expect(@cell.ship).to eq(@cruiser)
@@ -31,19 +31,20 @@ RSpec.describe Cell do
   end
 
   describe '#fire_upon' do
-  it 'knows if it has been fired upon' do
-    expect(@cell.fired_upon?).to eq(false)
-    @cell.fire_upon
-    expect(@cell.fired_upon?).to eq(true)
+    it 'knows if it has been fired upon' do
+      expect(@cell.fired_upon?).to eq(false)
+      @cell.fire_upon
+      expect(@cell.fired_upon?).to eq(true)
+    end
+
+    it 'reduces health of the ship when fired upon' do
+      @cell.place_ship(@cruiser)
+      @cell.fire_upon
+      expect(@cell.ship.health).to eq(2)
+    end
   end
 
-  it 'reduces health of the ship when fired upon' do
-    @cell.place_ship(@cruiser)
-    @cell.fire_upon
-    expect(@cell.ship.health).to eq(2)
-  end
-end
-describe '#render' do
+  describe '#render' do
     it 'can render' do
       expect(@cell.render).to eq(".")
 
