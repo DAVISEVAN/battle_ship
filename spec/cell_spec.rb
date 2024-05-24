@@ -7,7 +7,7 @@ RSpec.describe Cell do
     @cruiser = Ship.new("Cruiser", 3)
   end
 
-  describe '#initialize' do
+    describe '#initialize' do
     it 'exists' do
         expect(@cell).to be_a(Cell)
       end
@@ -29,4 +29,14 @@ RSpec.describe Cell do
       expect(@cell.empty?).to eq(false)
     end
   end
+
+    describe '#fire_upon' do
+    it 'knows if it has been fired upon' do
+        expect(@cell.fired_upon?).to eq(false)
+        @cell.fire_upon
+        expect(@cell.fired_upon?).to eq(true)
+        end  
+    end
+
+    
 end
