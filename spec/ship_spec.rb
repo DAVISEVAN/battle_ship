@@ -1,5 +1,3 @@
-# spec/ship_spec.rb
-
 require './lib/ship'
 
 RSpec.describe Ship do
@@ -22,6 +20,13 @@ RSpec.describe Ship do
 
     it 'starts with full health' do
       expect(@cruiser.health).to eq(3)
+    end
+  end
+
+  describe '#hit' do
+    it 'can take a hit' do
+      @cruiser.hit
+      expect(@cruiser.health).to eq(2)
     end
   end
 end
