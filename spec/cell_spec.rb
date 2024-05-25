@@ -32,6 +32,7 @@ RSpec.describe Cell do
 
   describe '#fire_upon' do
     it 'knows if it has been fired upon' do
+      @cell.place_ship(@cruiser)
       expect(@cell.fired_upon?).to eq(false)
       @cell.fire_upon
       expect(@cell.fired_upon?).to eq(true)
@@ -58,6 +59,7 @@ RSpec.describe Cell do
 
       @cell_2.fire_upon
       expect(@cell_2.render).to eq("H")
+      expect(@cruiser.sunk?).to be false
 
       @cruiser.hit
       @cruiser.hit
