@@ -29,25 +29,25 @@ RSpec.describe Board do
 
   describe '#validate_placement?' do
     it 'can validate ship coordinates match ship length' do
-      expect(@board.valid_placement?(cruiser, ["A1", "A2"])).to be false
-      expect(@board.valid_placement?(submarine, ["A2", "A3", "A4"])).to be false
+      expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be false
+      expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be false
     end
 
     it 'can validate ship coordinates are consecutive' do
-      expect(@board.valid_placement?(cruiser, ["A1", "A2", "A4"])).to be false
-      expect(@board.valid_placement?(submarine, ["A1", "C1"])).to be false
-      expect(@board.valid_placement?(cruiser, ["A3", "A2", "A1"])).to be false
-      expect(@board.valid_placement?(submarine, ["C1", "B1"])).to be false
+      expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to be false
+      expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to be false
+      expect(@board.valid_placement?(@cruiser, ["A3", "A2", "A1"])).to be false
+      expect(@board.valid_placement?(@submarine, ["C1", "B1"])).to be false
     end
 
     it 'can validate ship coordinates are not diagonal' do
-      expect(@board.valid_placement?(cruiser, ["A1", "B2", "C3"])).to be false
-      expect(@board.valid_placement?(submarine, ["C2", "D3"])).to be false
+      expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to be false
+      expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to be false
     end
 
     it 'can validate valid ship placement' do
-      expect(@board.valid_placement?(submarine, ["A1", "A2"])).to be true
-      expect(@board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to be true
+      expect(@board.valid_placement?(@submarine, ["A1", "A2"])).to be true
+      expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to be true
     end
   end
 
@@ -87,10 +87,9 @@ RSpec.describe Board do
       @board.cells["A1"].fire_upon
       @board.cells["B2"].fire_upon
 
-      expected_board_3 = "  1 2 3 4 \nA H . . . \nB . M . . \nC . . . . \nD . . . . \n"
+      expected_board_3 = "  1 2 3 4 \nA H S S . \nB . M . . \nC . . . . \nD . . . . \n"
       expect(@board.render).to eq(expected_board_3)
 
-      @cruiser.hit
       @cruiser.hit
       @cruiser.hit
 
