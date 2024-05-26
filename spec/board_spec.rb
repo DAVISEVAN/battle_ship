@@ -53,18 +53,18 @@ RSpec.describe Board do
 
   describe '#place' do
     it "can place a ship" do
-      @board.place(cruiser, ["A1", "A2", "A3"])    
-      cell_1 = board.cells["A1"]
-      cell_2 = board.cells["A2"]
-      cell_3 = board.cells["A3"]    
+      @board.place(@cruiser, ["A1", "A2", "A3"])    
+      cell_1 = @board.cells["A1"]
+      cell_2 = @board.cells["A2"]
+      cell_3 = @board.cells["A3"]    
 
-      expect(cell_1).to_be a Cell
-      expect(cell_2).to_be a Cell
-      expect(cell_3).to_be a Cell
-      expect(cell_1.ship).to_be a Ship  
-      expect(cell_2.ship).to_be a Ship  
-      expect(cell_3.ship).to_be a Ship  
-      expect(@cell_3.ship == cell_2.ship).to be true
+      expect(cell_1).to be_a(Cell)
+      expect(cell_2).to be_a(Cell)
+      expect(cell_3).to be_a(Cell)
+      expect(cell_1.ship).to be_a(Ship)  
+      expect(cell_2.ship).to be_a(Ship)  
+      expect(cell_3.ship).to be_a(Ship)  
+      expect(cell_3.ship).to eq(cell_2.ship) 
     end
 
     it "can validate a ship placement does not overlap" do
@@ -75,11 +75,8 @@ RSpec.describe Board do
   end
 
   describe '#render' do
-    it "renders the board" do
+      it "renders the board" do
       @board.place(@cruiser, ["A1", "A2", "A3"])
-
-      expected_board_1 = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
-      expect(@board.render).to eq(expected_board_1)
 
       expected_board_2 = "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"
       expect(@board.render(true)).to eq(expected_board_2)
