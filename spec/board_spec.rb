@@ -87,6 +87,9 @@ RSpec.describe Board do
       expected_board_3 = "  1 2 3 4 \nA H S S .\nB . M . .\nC . . . .\nD . . . .\n"
       expect(@board.render(true)).to eq(expected_board_3)
 
+      expected_board_4 = "  1 2 3 4 \nA H . . .\nB . M . .\nC . . . .\nD . . . .\n"
+      expect(@board.render).to eq(expected_board_4)
+
       @cruiser.hit
       @cruiser.hit
 
