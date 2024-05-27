@@ -78,19 +78,19 @@ RSpec.describe Board do
       it "renders the board" do
       @board.place(@cruiser, ["A1", "A2", "A3"])
 
-      expected_board_2 = "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"
+      expected_board_2 = "  1 2 3 4 \nA S S S .\nB . . . .\nC . . . .\nD . . . .\n"
       expect(@board.render(true)).to eq(expected_board_2)
 
       @board.cells["A1"].fire_upon
       @board.cells["B2"].fire_upon
 
-      expected_board_3 = "  1 2 3 4 \nA H S S . \nB . M . . \nC . . . . \nD . . . . \n"
+      expected_board_3 = "  1 2 3 4 \nA H S S .\nB . M . .\nC . . . .\nD . . . .\n"
       expect(@board.render).to eq(expected_board_3)
 
       @cruiser.hit
       @cruiser.hit
 
-      expected_board_4 = "  1 2 3 4 \nA X X X . \nB . M . . \nC . . . . \nD . . . . \n"
+      expected_board_4 = "  1 2 3 4 \nA X X X .\nB . M . .\nC . . . .\nD . . . .\n"
       expect(@board.render).to eq(expected_board_4)
     end
   end
