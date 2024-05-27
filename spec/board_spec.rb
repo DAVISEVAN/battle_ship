@@ -85,7 +85,10 @@ RSpec.describe Board do
       @board.cells["B2"].fire_upon
 
       expected_board_3 = "  1 2 3 4 \nA H S S .\nB . M . .\nC . . . .\nD . . . .\n"
-      expect(@board.render).to eq(expected_board_3)
+      expect(@board.render(true)).to eq(expected_board_3)
+
+      expected_board_4 = "  1 2 3 4 \nA H . . .\nB . M . .\nC . . . .\nD . . . .\n"
+      expect(@board.render).to eq(expected_board_4)
 
       @cruiser.hit
       @cruiser.hit
