@@ -17,7 +17,7 @@ class Board
     end
   
     def validate_coordinate?(coordinate)
-      @cells.key?(coordinate)
+      @cells.keys.include?(coordinate)
     end
   
     def valid_placement?(ship, coordinates)
@@ -60,6 +60,12 @@ class Board
         rows << row.strip
       end
       rows.join("\n") + "\n"
+    end
+
+    def all_ships_sunk?
+      @cells.values.all? do |cell|
+        cell.ship.nil? || cell.ship.sunk?
+      end
     end              
 end
   
