@@ -1,4 +1,6 @@
-# battle_ship - [Link to DTR/Retro](https://docs.google.com/document/d/1vNmktV7riVuzyN644JWiRpMT-59qiEYt-RC6d2mY-Fo/edit)
+# battle_ship
+[Link to DTR/Retro](https://docs.google.com/document/d/1vNmktV7riVuzyN644JWiRpMT-59qiEYt-RC6d2mY-Fo/edit)
+
 
 ### Reflection on Iteration 3 - Cory Bretsch/Evan Davis
 
