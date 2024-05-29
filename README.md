@@ -1,4 +1,4 @@
-# battle_ship
+# battle_ship - [Link to DTR/Retro](https://docs.google.com/document/d/1vNmktV7riVuzyN644JWiRpMT-59qiEYt-RC6d2mY-Fo/edit)
 
 ### Reflection on Iteration 3 - Cory Bretsch/Evan Davis
 
@@ -40,5 +40,3 @@ Feedback was shared:
    - Conducting code reviews 
 2. **Slack Hudles:**
    - Meeting up to discuss code and planning
-  
-[link to DTR/Retro](https://docs.google.com/document/d/1vNmktV7riVuzyN644JWiRpMT-59qiEYt-RC6d2mY-Fo/edit)
